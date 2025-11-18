@@ -8,10 +8,14 @@ import {
     updateProductAmount,
     Product
 } from '@/lib/products';
+import Image from 'next/image';
+import styles from './page.module.css';
 
+// Ponowne uruchomienie logiki testowej
 const TEST_INITIAL_AMOUNT = 15;
 const TEST_NEW_AMOUNT = 99;
 
+// Ustawienie wartości początkowej przed testem
 updateProductAmount(1, TEST_INITIAL_AMOUNT); 
 
 const allAlpha = getAllProductsAlphabetically();
@@ -21,53 +25,65 @@ const outOfStock = getProductsOutOfStock();
 const gpus = getProductsByType('karta graficzna');
 const product1BeforeUpdate = getProductById(1);
 
+// Wykonanie mutacji i pobranie wyniku
 const initialAmount = product1BeforeUpdate?.amount || 0;
 const updateSuccess = updateProductAmount(1, TEST_NEW_AMOUNT);
 const product1AfterUpdate = getProductById(1);
 
 export default function ProductList() {
+    // Ograniczamy listę do 9 produktów
+    const productsToDisplay = allAlpha.slice(0, 9); 
+
     return (
-        <main className="p-4">
-            <h2>Lista Produktów (Test Funkcji)</h2>
-            <p>Łączna liczba produktów: {allAlpha.length}</p>
+        <main>
+            <h2 className={styles.title}>Lista Produktów (Test Siatki i Funkcji)</h2>
             
+            <h3>Produkty na sprzedaż (9 pierwszych)</h3>
+            
+            {/* Siatka produktów z obrazami */}
+            <ul className={styles.productListGrid}>
+                {productsToDisplay.map((p: Product) => (
+                    <li key={p.id} className={styles.productListItem}>
+                        {p.image && (
+                            <div className={styles.productImageContainer}>
+                                <Image 
+                                    src={`/${p.image}`} 
+                                    alt={p.name} 
+                                    width={250} 
+                                    height={200} 
+                                    style={{ objectFit: 'contain' }}
+                                />
+                            </div>
+                        )}
+                        
+                        <h4>{p.name}</h4>
+                        <p>Kod: {p.code}</p>
+                        <p>Cena: <strong>{p.price.toFixed(2)} zł</strong></p>
+                        <p>Ilość na stanie: {p.amount}</p>
+                        <button style={{ padding: '8px 15px', backgroundColor: '#bcbcb7', color: '#181817', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
+                            Dodaj do koszyka
+                        </button>
+                    </li>
+                ))}
+            </ul>
+
             <hr />
+            
+            {/* Sekcja testowania funkcji */}
+            <div className={styles.testSection}>
+                <h3 className={styles.testHeader}>Testy Weryfikacyjne Funkcji</h3>
+                <p>1. Pierwszy produkt alfabetycznie: {allAlpha[0].name}</p>
+                <p>2. Najnowszy produkt: {newest[0].name}</p>
+                <p>3. Liczba na stanie: {inStock.length}</p>
+                <p>4. Liczba brakujących: {outOfStock.length}</p>
+                <p>5. Liczba kart graficznych: {gpus.length}</p>
 
-            <h3>1. Wszystkie produkty (Alfabetycznie, 3 pierwsze)</h3>
-            <ul>
-                {allAlpha.slice(0, 3).map((p: Product) => (
-                    <li key={p.id}>{p.name} (ID: {p.id})</li>
-                ))}
-            </ul>
-
-            <h3>2. Najnowsze produkty (3 pierwsze)</h3>
-            <ul>
-                {newest.slice(0, 3).map((p: Product) => (
-                    <li key={p.id}>{p.name} (Data: {new Date(p.date).toLocaleDateString()})</li>
-                ))}
-            </ul>
-
-            <h3>3. Produkty na stanie (amount {'>'} 0)</h3>
-            <p>Liczba produktów na stanie: {inStock.length}</p>
-
-            <h3>4. Produkty bez stanu (amount = 0)</h3>
-            <p>Liczba produktów bez stanu: {outOfStock.length}</p>
-
-            <h3>5. Produkty kategorii 'Karta graficzna'</h3>
-            <p>Liczba kart graficznych: {gpus.length}</p>
-            <ul>
-                {gpus.slice(0, 3).map((p: Product) => (
-                    <li key={p.id}>{p.name}</li>
-                ))}
-            </ul>
-
-            <hr />
-
-            <h3>6. & 7. Test wybranego produktu (ID 1) i mutacji</h3>
-            <p>Nazwa: {product1BeforeUpdate?.name}</p>
-            <p>Ilość przed aktualizacją: {initialAmount} (Oczekiwane {TEST_INITIAL_AMOUNT})</p>
-            <p>Wynik operacji `updateProductAmount(1, {TEST_NEW_AMOUNT})`: {updateSuccess ? 'Sukces' : 'Błąd'}</p>
-            <p>Ilość po aktualizacji: {product1AfterUpdate?.amount} (Oczekiwane {TEST_NEW_AMOUNT})</p>
+                <h4 className={styles.testHeader}>Test Mutacji (ID 1)</h4>
+                <p>Nazwa: {product1BeforeUpdate?.name}</p>
+                <p>Ilość przed aktualizacją: {initialAmount} (Oczekiwane {TEST_INITIAL_AMOUNT})</p>
+                <p>Wynik operacji `updateProductAmount(1, {TEST_NEW_AMOUNT})`: {updateSuccess ? 'Sukces' : 'Błąd'}</p>
+                <p>Ilość po aktualizacji: {product1AfterUpdate?.amount} (Oczekiwane {TEST_NEW_AMOUNT})</p>
+            </div>
         </main>
     );
 }

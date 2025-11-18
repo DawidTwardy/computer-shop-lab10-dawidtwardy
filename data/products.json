@@ -8,7 +8,7 @@
     "amount": 99,
     "description": "Wydajny procesor Intela, doskonały do multitaskingu i gier.",
     "date": "2025-10-20T10:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 2,
@@ -19,7 +19,7 @@
     "amount": 25,
     "description": "Idealna karta do grania w rozdzielczości QHD.",
     "date": "2025-11-15T12:30:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "amount": 50,
     "description": "Szybka pamięć DDR5 z niskim opóźnieniem, idealna dla najnowszych platform.",
     "date": "2025-11-10T09:15:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 4,
@@ -41,7 +41,7 @@
     "amount": 0,
     "description": "Ultra szybki dysk SSD NVMe do systemów operacyjnych i gier.",
     "date": "2025-09-01T15:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 5,
@@ -52,7 +52,7 @@
     "amount": 10,
     "description": "Procesor AMD z technologią 3D V-Cache, optymalny do gier.",
     "date": "2025-11-01T08:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 6,
@@ -63,7 +63,7 @@
     "amount": 12,
     "description": "Wysokiej klasy karta graficzna AMD dla wymagających użytkowników.",
     "date": "2025-11-20T11:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 7,
@@ -74,7 +74,7 @@
     "amount": 80,
     "description": "Klasyczna, szybka pamięć DDR4 dla starszych i budżetowych systemów.",
     "date": "2025-08-01T14:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 8,
@@ -85,7 +85,7 @@
     "amount": 30,
     "description": "Pojemny dysk HDD do przechowywania dużych plików.",
     "date": "2025-07-25T09:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 9,
@@ -96,7 +96,7 @@
     "amount": 5,
     "description": "Flagowy procesor Intela, najwyższa wydajność w każdej kategorii.",
     "date": "2025-11-20T15:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 10,
@@ -107,7 +107,7 @@
     "amount": 0,
     "description": "Najmocniejsza karta graficzna na rynku. Chwilowo niedostępna.",
     "date": "2025-11-20T18:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 11,
@@ -118,7 +118,7 @@
     "amount": 10,
     "description": "Ekstremalnie szybka pamięć dla entuzjastów.",
     "date": "2025-11-18T10:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 12,
@@ -129,7 +129,7 @@
     "amount": 20,
     "description": "Dysk SSD Gen5 oferujący niespotykaną prędkość odczytu/zapisu.",
     "date": "2025-11-17T11:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 13,
@@ -140,7 +140,7 @@
     "amount": 8,
     "description": "Flagowy procesor AMD, mistrz w aplikacjach profesjonalnych.",
     "date": "2025-11-21T09:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 14,
@@ -151,7 +151,7 @@
     "amount": 0,
     "description": "Topowa, fabrycznie podkręcona wersja RTX 4080. Brak w magazynie.",
     "date": "2025-10-05T13:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 15,
@@ -162,7 +162,7 @@
     "amount": 40,
     "description": "Niezawodna pamięć DDR5, dobry stosunek ceny do wydajności.",
     "date": "2025-08-10T16:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 16,
@@ -173,7 +173,7 @@
     "amount": 18,
     "description": "Duża pojemność i wysoka prędkość Gen4.",
     "date": "2025-11-19T08:30:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 17,
@@ -184,7 +184,7 @@
     "amount": 22,
     "description": "Solidny procesor średniej klasy z odblokowanym mnożnikiem.",
     "date": "2025-10-15T09:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 18,
@@ -195,7 +195,7 @@
     "amount": 35,
     "description": "Karta graficzna do płynnej rozgrywki w 1080p.",
     "date": "2025-09-20T11:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 19,
@@ -206,7 +206,7 @@
     "amount": 14,
     "description": "Pamięć DDR5 z efektownym podświetleniem RGB.",
     "date": "2025-11-22T14:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 20,
@@ -217,7 +217,7 @@
     "amount": 28,
     "description": "Bardzo szybki i niezawodny dysk SSD Gen4.",
     "date": "2025-10-01T17:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 21,
@@ -228,7 +228,7 @@
     "amount": 40,
     "description": "Świetny procesor budżetowy na platformę AM5.",
     "date": "2025-09-10T10:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 22,
@@ -239,7 +239,7 @@
     "amount": 0,
     "description": "Elegancka, referencyjna wersja RTX 4070.",
     "date": "2025-11-05T12:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 23,
@@ -250,7 +250,7 @@
     "amount": 60,
     "description": "Niskoprofilowa i szybka pamięć DDR4.",
     "date": "2025-07-01T08:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 24,
@@ -261,7 +261,7 @@
     "amount": 45,
     "description": "Szybki dysk Gen4 z wysoką wytrzymałością.",
     "date": "2025-10-25T13:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 25,
@@ -272,7 +272,7 @@
     "amount": 55,
     "description": "Budżetowy procesor do podstawowych zestawów komputerowych.",
     "date": "2025-11-23T16:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 26,
@@ -283,7 +283,7 @@
     "amount": 0,
     "description": "Dobra karta do gier w Full HD. Chwilowo brak.",
     "date": "2025-08-20T10:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 27,
@@ -294,7 +294,7 @@
     "amount": 5,
     "description": "Najszybsza pamięć DDR5 na rynku, dla rekordzistów OC.",
     "date": "2025-11-25T11:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 28,
@@ -305,7 +305,7 @@
     "amount": 11,
     "description": "Wysoka niezawodność, idealny do serwerów NAS.",
     "date": "2025-06-01T15:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 29,
@@ -316,7 +316,7 @@
     "amount": 33,
     "description": "Poprzednia generacja, wciąż wydajna w średniej półce.",
     "date": "2025-09-05T09:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 30,
@@ -327,7 +327,7 @@
     "amount": 20,
     "description": "Karta graficzna Intela z dużym VRAM.",
     "date": "2025-10-10T12:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 31,
@@ -338,7 +338,7 @@
     "amount": 70,
     "description": "Podstawowy zestaw pamięci DDR4.",
     "date": "2025-05-15T14:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 32,
@@ -349,7 +349,7 @@
     "amount": 0,
     "description": "Niewielki, ale szybki dysk NVMe na system.",
     "date": "2025-08-05T16:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 33,
@@ -360,7 +360,7 @@
     "amount": 60,
     "description": "Procesor do najprostszych biurowych zastosowań.",
     "date": "2025-04-01T08:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 34,
@@ -371,7 +371,7 @@
     "amount": 17,
     "description": "Wysoka wydajność w rozsądnej cenie.",
     "date": "2025-10-30T10:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 35,
@@ -382,7 +382,7 @@
     "amount": 2,
     "description": "Ogromna pojemność dla stacji roboczych.",
     "date": "2025-11-24T12:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 36,
@@ -393,7 +393,7 @@
     "amount": 25,
     "description": "Niezawodny dysk SATA SSD do zastosowań NAS/serwerowych.",
     "date": "2025-07-15T14:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 37,
@@ -404,7 +404,7 @@
     "amount": 9,
     "description": "Wciąż flagowa wydajność poprzedniej generacji.",
     "date": "2025-08-25T11:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 38,
@@ -415,7 +415,7 @@
     "amount": 16,
     "description": "Świetny wybór dla graczy w rozdzielczości 1440p.",
     "date": "2025-10-22T09:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 39,
@@ -426,7 +426,7 @@
     "amount": 50,
     "description": "Budżetowa pamięć dla starszych konfiguracji.",
     "date": "2025-03-01T15:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 40,
@@ -437,7 +437,7 @@
     "amount": 40,
     "description": "Niezawodny i popularny dysk SATA SSD.",
     "date": "2025-06-10T10:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 41,
@@ -448,7 +448,7 @@
     "amount": 45,
     "description": "Wciąż popularny procesor na platformę AM4.",
     "date": "2025-07-20T17:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 42,
@@ -459,7 +459,7 @@
     "amount": 0,
     "description": "Średnia półka, idealna do gier w 1440p.",
     "date": "2025-09-08T11:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 43,
@@ -470,7 +470,7 @@
     "amount": 38,
     "description": "Podstawowa pamięć DDR5, bez zbędnych dodatków.",
     "date": "2025-08-08T13:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 44,
@@ -481,7 +481,7 @@
     "amount": 60,
     "description": "Niewielki i tani dysk NVMe Gen4.",
     "date": "2025-11-03T18:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 45,
@@ -492,7 +492,7 @@
     "amount": 18,
     "description": "Poprzednia, ale wciąż bardzo mocna i7.",
     "date": "2025-08-30T09:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 46,
@@ -503,7 +503,7 @@
     "amount": 25,
     "description": "Konkurencyjna karta w średniej półce cenowej.",
     "date": "2025-09-28T14:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 47,
@@ -514,7 +514,7 @@
     "amount": 42,
     "description": "Szybka pamięć DDR5, idealna do gier.",
     "date": "2025-11-02T10:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 48,
@@ -525,7 +525,7 @@
     "amount": 29,
     "description": "Standardowy, pojemny dysk do archiwizacji.",
     "date": "2025-05-20T11:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 49,
@@ -536,7 +536,7 @@
     "amount": 7,
     "description": "Wydajność gamingowa na najwyższym poziomie.",
     "date": "2025-11-20T16:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 50,
@@ -547,7 +547,7 @@
     "amount": 3,
     "description": "Najwyższy model RTX 4090 od MSI, z doskonałym chłodzeniem.",
     "date": "2025-11-25T08:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 51,
@@ -558,7 +558,7 @@
     "amount": 10,
     "description": "Duża pojemność pamięci dla kreatywnych profesjonalistów.",
     "date": "2025-11-12T13:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 52,
@@ -569,7 +569,7 @@
     "amount": 20,
     "description": "Bardzo szybki i efektywny dysk Gen4.",
     "date": "2025-11-19T10:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 53,
@@ -580,7 +580,7 @@
     "amount": 30,
     "description": "Najnowsza i5 bez grafiki, doskonały stosunek ceny do wydajności.",
     "date": "2025-11-22T12:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 54,
@@ -591,7 +591,7 @@
     "amount": 15,
     "description": "Średnia półka AMD, mocna konkurencja dla NVIDII.",
     "date": "2025-10-18T09:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 55,
@@ -602,7 +602,7 @@
     "amount": 12,
     "description": "Zoptymalizowana pamięć dla platform AMD AM5.",
     "date": "2025-11-21T17:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 56,
@@ -613,7 +613,7 @@
     "amount": 8,
     "description": "Duża pojemność 4TB w standardzie Gen4.",
     "date": "2025-11-05T10:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 57,
@@ -624,7 +624,7 @@
     "amount": 25,
     "description": "Wydajny 8-rdzeniowy procesor na platformę AM5.",
     "date": "2025-09-15T15:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 58,
@@ -635,7 +635,7 @@
     "amount": 18,
     "description": "Wersja 16GB VRAM, idealna dla twórców.",
     "date": "2025-10-08T11:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 59,
@@ -646,7 +646,7 @@
     "amount": 0,
     "description": "Szybka pamięć DDR4 dla zaawansowanych systemów.",
     "date": "2025-07-05T14:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 60,
@@ -657,7 +657,7 @@
     "amount": 14,
     "description": "Duża pojemność do zastosowań domowych.",
     "date": "2025-05-01T09:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 61,
@@ -668,7 +668,7 @@
     "amount": 50,
     "description": "Najbardziej budżetowy i wciąż popularny Core i3.",
     "date": "2025-06-20T10:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 62,
@@ -679,7 +679,7 @@
     "amount": 30,
     "description": "Karta do płynnej rozgrywki w 1080p, dobra cena.",
     "date": "2025-07-28T12:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 63,
@@ -690,7 +690,7 @@
     "amount": 45,
     "description": "Standardowa, niezawodna pamięć DDR5.",
     "date": "2025-09-25T13:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 64,
@@ -701,7 +701,7 @@
     "amount": 0,
     "description": "Bardzo szybki dysk NVMe, idealny pod PS5.",
     "date": "2025-08-15T16:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 65,
@@ -712,7 +712,7 @@
     "amount": 35,
     "description": "Wersja bez iGPU, świetny wybór dla graczy.",
     "date": "2025-11-09T09:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 66,
@@ -723,7 +723,7 @@
     "amount": 28,
     "description": "Kompaktowa karta RTX 4070.",
     "date": "2025-10-12T11:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 67,
@@ -734,7 +734,7 @@
     "amount": 6,
     "description": "Ekstremalnie szybki zestaw z RGB.",
     "date": "2025-11-24T18:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 68,
@@ -745,7 +745,7 @@
     "amount": 55,
     "description": "Budżetowy dysk NVMe, wystarczający do podstawowych zadań.",
     "date": "2025-08-19T14:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 69,
@@ -756,7 +756,7 @@
     "amount": 10,
     "description": "Wysokiej klasy procesor z 12. generacji.",
     "date": "2025-07-10T10:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 70,
@@ -767,7 +767,7 @@
     "amount": 0,
     "description": "Wciąż potężna karta z poprzedniej generacji. Brak w magazynie.",
     "date": "2025-06-05T12:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 71,
@@ -778,7 +778,7 @@
     "amount": 18,
     "description": "Duża pojemność DDR4 dla twórców treści.",
     "date": "2025-09-01T15:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 72,
@@ -789,7 +789,7 @@
     "amount": 5,
     "description": "Ogromna i szybka przestrzeń Gen4.",
     "date": "2025-11-26T09:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 73,
@@ -800,7 +800,7 @@
     "amount": 10,
     "description": "Wielordzeniowy potwór na platformę AM4.",
     "date": "2025-05-10T11:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 74,
@@ -811,7 +811,7 @@
     "amount": 11,
     "description": "Wytrzymała i cicha karta z serii TUF.",
     "date": "2025-10-01T13:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 75,
@@ -822,7 +822,7 @@
     "amount": 20,
     "description": "Nietypowa pojemność, idealna do obróbki wideo.",
     "date": "2025-11-26T15:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 76,
@@ -833,7 +833,7 @@
     "amount": 65,
     "description": "Najtańszy dysk SSD SATA, do podstawowych zadań.",
     "date": "2025-03-20T17:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 77,
@@ -844,7 +844,7 @@
     "amount": 24,
     "description": "Wersja bez 'K', dobry wybór dla cichych zestawów.",
     "date": "2025-10-28T08:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 78,
@@ -855,7 +855,7 @@
     "amount": 30,
     "description": "Fabrycznie podkręcona karta, gotowa do Full HD.",
     "date": "2025-08-05T10:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 79,
@@ -866,7 +866,7 @@
     "amount": 4,
     "description": "Maksymalna pojemność DDR4 dla profesjonalistów.",
     "date": "2025-07-29T12:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 80,
@@ -877,7 +877,7 @@
     "amount": 26,
     "description": "Wydajny dysk Gen4 z radiatorem.",
     "date": "2025-10-14T14:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 81,
@@ -888,7 +888,7 @@
     "amount": 38,
     "description": "8-rdzeniowy procesor na platformę AM4, świetny do pracy.",
     "date": "2025-06-01T11:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 82,
@@ -899,7 +899,7 @@
     "amount": 0,
     "description": "Podstawowa, kompaktowa wersja RTX 4060.",
     "date": "2025-08-28T13:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 83,
@@ -910,7 +910,7 @@
     "amount": 9,
     "description": "Duża pojemność DDR5 dla zaawansowanych użytkowników.",
     "date": "2025-10-04T15:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 84,
@@ -921,7 +921,7 @@
     "amount": 32,
     "description": "Sprawdzony i bardzo szybki dysk Gen3.",
     "date": "2025-04-15T09:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 85,
@@ -932,7 +932,7 @@
     "amount": 16,
     "description": "Potężny procesor bez 'K', do systemów ze stałym zegarem.",
     "date": "2025-10-24T10:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 86,
@@ -943,7 +943,7 @@
     "amount": 21,
     "description": "Wersja SUPER dla lepszej wydajności w 1440p.",
     "date": "2025-11-20T11:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 87,
@@ -954,7 +954,7 @@
     "amount": 17,
     "description": "Duża pojemność przy bazowej częstotliwości DDR5.",
     "date": "2025-08-01T15:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 88,
@@ -965,7 +965,7 @@
     "amount": 7,
     "description": "Ogromna pojemność i wytrzymałość do serwerów.",
     "date": "2025-02-01T09:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 89,
@@ -976,7 +976,7 @@
     "amount": 40,
     "description": "APU ze zintegrowaną grafiką, idealne do małych zestawów.",
     "date": "2025-05-25T14:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 90,
@@ -987,7 +987,7 @@
     "amount": 35,
     "description": "Wciąż solidna karta, dużo VRAMu.",
     "date": "2025-04-20T16:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 91,
@@ -998,7 +998,7 @@
     "amount": 3,
     "description": "Ekstremalnie duża ilość pamięci DDR4.",
     "date": "2025-08-22T17:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 92,
@@ -1009,7 +1009,7 @@
     "amount": 70,
     "description": "Podstawowy dysk SATA SSD 2.5 cala.",
     "date": "2025-03-10T08:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 93,
@@ -1020,7 +1020,7 @@
     "amount": 25,
     "description": "Świetny procesor do gier z 12. generacji.",
     "date": "2025-07-01T10:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 94,
@@ -1031,7 +1031,7 @@
     "amount": 0,
     "description": "Karta do gier w 1080p z poprzedniej generacji. Brak.",
     "date": "2025-06-15T12:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 95,
@@ -1042,7 +1042,7 @@
     "amount": 1,
     "description": "Najwyższa wydajność i pojemność w DDR5.",
     "date": "2025-11-26T18:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 96,
@@ -1053,7 +1053,7 @@
     "amount": 55,
     "description": "Mały dysk na system w formacie NVMe.",
     "date": "2025-03-05T09:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "images/products/img-d.jpg"
   },
   {
     "id": 97,
@@ -1064,7 +1064,7 @@
     "amount": 20,
     "description": "Wydajny procesor z nowszej serii AMD.",
     "date": "2025-11-04T13:00:00Z",
-    "image": "public/images/products/img-a.jpg"
+    "image": "images/products/img-a.jpg"
   },
   {
     "id": 98,
@@ -1075,7 +1075,7 @@
     "amount": 13,
     "description": "Mocna karta poprzedniej generacji, idealna do 1440p.",
     "date": "2025-08-03T15:00:00Z",
-    "image": "public/images/products/img-b.jpg"
+    "image": "images/products/img-b.jpg"
   },
   {
     "id": 99,
@@ -1086,7 +1086,7 @@
     "amount": 8,
     "description": "Wysokie taktowanie i RGB, dla entuzjastów.",
     "date": "2025-11-20T19:00:00Z",
-    "image": "public/images/products/img-c.jpg"
+    "image": "images/products/img-c.jpg"
   },
   {
     "id": 100,
@@ -1097,6 +1097,6 @@
     "amount": 10,
     "description": "Ogromna pojemność do przechowywania gier i danych.",
     "date": "2025-09-20T10:00:00Z",
-    "image": "public/images/products/img-d.jpg"
+    "image": "/img-d.jpg"
   }
 ]

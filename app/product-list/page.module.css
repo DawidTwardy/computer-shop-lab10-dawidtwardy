@@ -1,0 +1,69 @@
+/* app/product-list/page.module.css */
+
+.title {
+    font-size: 24px;
+    color: #e5e5e1; 
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.productListGrid {
+    /* Domyślny układ dla większych ekranów */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolumny dla 9 elementów */
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+}
+
+/* Dostosowanie siatki dla mniejszych ekranów */
+@media (max-width: 1024px) {
+    .productListGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .productListGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.productListItem {
+    /* Stylizacja elementu karty produktu */
+    border: 1px solid #bcbcb7;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    text-align: center;
+    color: #e5e5e1;
+}
+
+/* Kontener dla optymalizacji Next/Image */
+.productImageContainer {
+    width: 100%;
+    height: 200px; 
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* Style dla sekcji testowej (przywrócone) */
+.testSection {
+    border: 1px solid #bcbcb7;
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.testHeader {
+    color: #bcbcb7; /* Jasnoszary, żeby pasował do tła */
+    border-bottom: 2px solid #bcbcb7;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
