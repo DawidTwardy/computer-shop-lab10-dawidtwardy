@@ -111,3 +111,16 @@ ul li {
   text-align: center;
   margin-top: 3rem;
 }
+/* Stylizacja strony 404 */
+.global-not-found {
+    text-align: center;
+    padding: 50px 0;
+    margin-top: 50px;
+    border: 2px solid #bcbcb7;
+    border-radius: 8px;
+}
+
+.global-not-found h1 {
+    font-size: 2.5rem;
+    color: #e5e5e1; /* Używamy jasnego koloru tła */
+}
