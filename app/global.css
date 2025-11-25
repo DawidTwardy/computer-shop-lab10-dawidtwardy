@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
 }
@@ -8,144 +12,34 @@ html {
   font-family: 'Merriweather', serif;
 }
 
-body {
-  margin: 0;
-  background-color: #8989e0;
-  color: #e5e5e1;
-}
-
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* ODPOWIEDNIK #page */
-.main-container {
-  width: 90%;
-  max-width: 60rem;
-  margin: 2rem auto;
-  /* Usuwamy dotychczasowe tło i cień, by pasowało do nowego projektu */
-  background-color: transparent; 
-  box-shadow: none;
-  min-height: auto;
-  padding: 0; /* Zgodnie z #page */
-}
-
-/* ODPOWIEDNIK #main-header */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding: 10px 0; /* Zachowujemy padding */
-  background-color: transparent; /* Usuwamy kolor tła nagłówka */
-  border-bottom: none;
-  text-align: left;
-}
-
-header h1 {
-  /* ODPOWIEDNIK #logo */
-  font-family: 'Inter', sans-serif;
-  font-size: 1.5rem;
-  border-radius: 1px;
-  color: #e1e1d7; /* Kolor logo */
-  margin: 0;
-}
-
-header h1 a {
-  color: #e1e1d7;
-  text-decoration: none;
-}
-
-/* Stylizacja nawigacji (ul) */
-header nav ul {
-  display: flex;
-  gap: 2rem;
-  font-weight: bold;
-}
-
-header nav ul a {
-  text-decoration: none;
-  color: #e5e5e1;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-}
-
-/* Hover i aktywna klasa */
-header nav ul a:hover,
-header nav ul a.active {
-  background-color: #bcbcb7;
-  color: #181817;
-}
-
-/* Styl dla stopki - dostosowanie do nowego tła */
-footer {
-  text-align: center;
-  padding: 1rem 0;
-  background-color: transparent; /* Zmieniamy na transparentne */
-  color: #e5e5e1;
-  margin-top: 2rem;
-}
-
-footer p {
-  margin: 0;
-}
-
-/* Pozostałe elementy */
-hr {
-  border: 1px solid #bcbcb7;
-  margin: 20px 0;
-}
-
-main {
-  padding: 20px 0;
-}
-
-ul li {
-  padding: 5px 0;
-  border-bottom: 1px dashed #bcbcb7;
-}
-
-.error {
-  text-align: center;
-  margin-top: 3rem;
-}
-/* Stylizacja strony 404 */
+/* Custom styles not fully migrated to Tailwind - keeping minimal overrides or required classes */
 .global-not-found {
-    text-align: center;
-    padding: 50px 0;
-    margin-top: 50px;
     border: 2px solid #bcbcb7;
     border-radius: 8px;
 }
 
 .global-not-found h1 {
-    font-size: 2.5rem;
-    color: #e5e5e1; /* Używamy jasnego koloru tła */
-}
-/* Stylizacja strony 404 */
-.global-not-found {
-    text-align: center;
-    padding: 50px 0;
-    margin-top: 50px;
-    border: 2px solid #bcbcb7;
-    border-radius: 8px;
-}
-
-.global-not-found h1 {
-    font-size: 2.5rem;
     color: #e5e5e1;
 }
 
-/* Styl dla linków w not-found */
 .global-not-found a {
-    color: #e5e5e1; /* Biały/Jasny kolor */
+    color: #e5e5e1; 
     text-decoration: underline;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 .global-not-found a:hover {
-    color: #bcbcb7; /* Lekkie podświetlenie na hover */
+    color: #bcbcb7;
+}
+
+.active {
+    background-color: #bcbcb7;
+    color: #181817;
 }
