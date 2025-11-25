@@ -1,25 +1,24 @@
+// app/layout.tsx
 import './global.css';
 import { Inter } from 'next/font/google';
 import React from 'react';
-import Navbar from '@/components/Navbar';
+import MainHeader from '@/components/MainHeader';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="pl">
-            <body className={inter.className}>
-                <div className="main-container">
-                    <header>
-                        <h1>Sklep Komputerowy PBE-LAB10</h1>
-                        <Navbar />
-                    </header>
-                    <main>
+            {/* Dodajemy klasy bazowe Tailwind na body */}
+            <body className={`${inter.className} bg-[#8989e0] text-[#e5e5e1]`}>
+                {/* Zastępujemy .main-container stylami Tailwind */}
+                <div className="w-[90%] max-w-6xl mx-auto my-8 min-h-screen flex flex-col p-0">
+                    <MainHeader />
+                    <main className="flex-grow p-5 md:p-10">
                         {children}
                     </main>
-                    <footer>
-                        <p>&copy; 2025 Dawid Twardy. Wszelkie prawa zastrzeżone.</p>
-                    </footer>
+                    <Footer />
                 </div>
             </body>
         </html>
