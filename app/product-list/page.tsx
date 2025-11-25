@@ -32,13 +32,13 @@ const product1AfterUpdate = getProductById(1);
 
 export default function ProductList() {
     // Ograniczamy listę do 9 produktów
-    const productsToDisplay = allAlpha.slice(0,100); 
+    const productsToDisplay = allAlpha.slice(0, 9); 
 
     return (
         <main>
             <h2 className={styles.title}>Lista Produktów (Test Siatki i Funkcji)</h2>
             
-            <h3>Produkty na sprzedaż </h3>
+            <h3>Produkty na sprzedaż (9 pierwszych)</h3>
             
             {/* Siatka produktów z obrazami */}
             <ul className={styles.productListGrid}>
