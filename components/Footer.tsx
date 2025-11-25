@@ -1,4 +1,3 @@
-// components/Footer.tsx
 import React from 'react';
 
 export default function Footer() {
@@ -6,7 +5,6 @@ export default function Footer() {
     const pkLink = "https://mechan.pk.edu.pl/"; 
 
     return (
-        // Zaimplementowane style z `app/global.css` jako klasy Tailwind
         <footer className="text-center p-4 text-[#e5e5e1] mt-8">
             <p className="m-0">&copy; {currentYear} Dawid Twardy. Wszelkie prawa zastrzeżone.</p>
             <p className="m-0">
