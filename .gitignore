@@ -1,0 +1,44 @@
+# Dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# Next.js build output
+/.next/
+/out/
+/build/
+
+# Production dependencies
+/public/static/
+/public/build/
+
+# TypeScript cache
+.tsbuildinfo
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+.history/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# npm cache and logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+.yarn/cache
+.yarn/unplugged
+
+# Other optional ignores
+coverage
+/cypress/videos/
+/cypress/screenshots/
