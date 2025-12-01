@@ -44,6 +44,16 @@ header {
   text-align: left;
 }
 
+/* Nowa stylizacja dla Linka w nagłówku, który zawiera logo i h1 */
+header a {
+    color: #e1e1d7;
+    text-decoration: none;
+}
+
+header a:hover {
+    color: #bcbcb7; /* Zmiana koloru tekstu na hover */
+}
+
 header h1 {
   /* ODPOWIEDNIK #logo */
   font-family: 'Inter', sans-serif;
@@ -51,11 +61,7 @@ header h1 {
   border-radius: 1px;
   color: #e1e1d7; /* Kolor logo */
   margin: 0;
-}
-
-header h1 a {
-  color: #e1e1d7;
-  text-decoration: none;
+  /* Usuwamy header h1 a, ponieważ style są w header a */
 }
 
 /* Stylizacja nawigacji (ul) */
@@ -72,7 +78,7 @@ header nav ul a {
   border-radius: 4px;
 }
 
-/* Hover i aktywna klasa */
+/* Hover i aktywna klasa (do wykorzystania w NavLink) */
 header nav ul a:hover,
 header nav ul a.active {
   background-color: #bcbcb7;
@@ -90,6 +96,17 @@ footer {
 
 footer p {
   margin: 0;
+}
+
+/* Stylizacja dla linków w stopce */
+footer a {
+    color: #bcbcb7; /* Kolor linka PK */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 /* Pozostałe elementy */
@@ -111,19 +128,7 @@ ul li {
   text-align: center;
   margin-top: 3rem;
 }
-/* Stylizacja strony 404 */
-.global-not-found {
-    text-align: center;
-    padding: 50px 0;
-    margin-top: 50px;
-    border: 2px solid #bcbcb7;
-    border-radius: 8px;
-}
 
-.global-not-found h1 {
-    font-size: 2.5rem;
-    color: #e5e5e1; /* Używamy jasnego koloru tła */
-}
 /* Stylizacja strony 404 */
 .global-not-found {
     text-align: center;
