@@ -61,7 +61,6 @@ header h1 {
   border-radius: 1px;
   color: #e1e1d7; /* Kolor logo */
   margin: 0;
-  /* Usuwamy header h1 a, ponieważ style są w header a */
 }
 
 /* Stylizacja nawigacji (ul) */
@@ -153,4 +152,91 @@ ul li {
 
 .global-not-found a:hover {
     color: #bcbcb7; /* Lekkie podświetlenie na hover */
+}
+
+/* --- STYLE DLA LISTY/SZCZEGÓŁÓW PRODUKTÓW (Zadanie 6.1/9.2) --- */
+
+/* Style dla list produktów */
+.product-list-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+}
+
+.product-list-item {
+    border: 1px solid #bcbcb7;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    text-align: center;
+    color: #e5e5e1;
+}
+
+/* Style dla szczegółów produktu */
+.product-details-container {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #e5e5e1;
+}
+
+.product-details-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Responsywność dla mniejszych ekranów (opcjonalna, ale przydatna) */
+@media (max-width: 800px) {
+    .product-details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.image-box {
+    border: 1px solid #bcbcb7;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #bcbcb7;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #e5e5e1;
+}
+
+.in-stock {
+    color: #79d279; /* Zielony */
+    font-weight: bold;
+}
+
+.out-of-stock {
+    color: #d27979; /* Czerwony */
+    font-weight: bold;
+}
+
+.buy-button {
+    padding: 8px 15px; 
+    background-color: #bcbcb7; 
+    color: #181817; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-weight: bold;
 }
