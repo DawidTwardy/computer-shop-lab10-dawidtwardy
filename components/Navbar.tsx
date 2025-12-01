@@ -1,23 +1,24 @@
-import Link from 'next/link';
+import NavLink from '@/components/NavLink';
+// Usunięto import Link z next/link
 
 export default function Navbar() {
     return (
         <nav>
             <ul>
                 <li>
-                    <Link href="/">Strona Główna</Link>
+                    <NavLink href="/">Strona Główna</NavLink>
                 </li>
                 <li>
-                    <Link href="/product-list">Lista Produktów</Link>
+                    <NavLink href="/product-list">Lista Produktów</NavLink>
                 </li>
                 <li>
-                    <Link href="/basket">Koszyk</Link>
+                    <NavLink href="/basket">Koszyk</NavLink>
                 </li>
                 <li>
-                    <Link href="/order-history">Historia Zakupów</Link>
+                    <NavLink href="/order-history">Historia Zakupów</NavLink>
                 </li>
                 <li>
-                    <Link href="/about">O Sklepie</Link>
+                    <NavLink href="/about">O Sklepie</NavLink>
                 </li>
             </ul>
         </nav>

@@ -1,3 +1,9 @@
+# NextJS Labs of BackEnd Programming
+## Lab 10 DT
+The aim of the lab is to prepare the environment for creating a full-
+stack Next.js application, learn the basics of this framework and
+become familiar with handling subpages (routes).
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
