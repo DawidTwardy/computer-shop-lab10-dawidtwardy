@@ -5,16 +5,17 @@ import React from 'react';
 
 export default function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
     const path = usePathname();
-    
-    // Logika sprawdzania, czy link jest aktywny.
-    // Działa poprawnie dla '/' oraz dla zagnieżdżonych tras (np. '/product-list' aktywne także dla '/product-list/123').
     const isActive = path.startsWith(href) && (path === href || (href !== '/' && path.charAt(href.length) === '/'));
     
+    // Klasy Tailwind
+    const baseClasses = "px-3 py-2 rounded transition-colors duration-200 no-underline";
+    const activeClasses = "bg-[#bcbcb7] text-[#181817]";
+    const inactiveClasses = "text-[#e5e5e1] hover:bg-[#bcbcb7] hover:text-[#181817]";
+
     return (
         <Link
             href={href}
-            // Używamy klasy CSS 'active' zdefiniowanej w global.css
-            className={isActive ? "active" : undefined}
+            className={`${baseClasses} ${isActive ? activeClasses : inactiveClasses}`}
         >
             {children}
         </Link>
