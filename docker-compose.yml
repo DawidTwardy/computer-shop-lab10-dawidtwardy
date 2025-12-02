@@ -1,0 +1,33 @@
+# dawidtwardy/computer-shop-lab10-dawidtwardy/computer-shop-lab10-dawidtwardy-lab11/docker-compose.yml
+version: '3.7'
+
+services:
+  postgres_2025_dt:
+    image: postgres:15
+    container_name: postgres-db_2025_dt
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: user_dt
+      POSTGRES_PASSWORD: mysecretpassword
+    ports:
+      - "5432:5432"
+    networks:
+      - prisma-network_2025_dt
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user_dt -d postgres"]
+      interval: 5s
+      timeout: 2s
+      retries: 20
+    volumes:
+      - postgres_data_2025_dt:/var/lib/postgresql/data
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  prisma-network_2025_dt:
+
+volumes:
+  postgres_data_2025_dt:
