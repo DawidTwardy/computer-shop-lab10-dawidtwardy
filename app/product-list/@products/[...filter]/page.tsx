@@ -13,16 +13,26 @@ const productTypes = ['procesor', 'karta graficzna', 'pamięć ram', 'dysk'];
 
 // Helper do numeracji
 function getProductCategoryIndex(product: Product) {
-    const productsInCategory = getProductsByType(product.type)
+    const productsInCategory = getProductsByType(product.type as any)
         .sort((a, b) => a.name.localeCompare(b.name));
     return productsInCategory.findIndex(p => p.id === product.id) + 1;
 }
 
-// --- Renderer Szczegółów (Tailwind) ---
-function renderProductDetails(product: Product, index: number) {
+// --- Renderer Szczegółów (Z obsługą rabatu) ---
+function renderProductDetails(product: Product, index: number, discountValue?: number) {
     const isAvailable = product.amount > 0;
     const stockClass = isAvailable ? 'text-green-400 font-bold' : 'text-red-400 font-bold';
     const imageLinkHref = `/product-list/${product.type.replace(/\s/g, '')}/${index}/image`;
+
+    // Logika ceny z rabatem
+    const originalPrice = product.price;
+    let finalPrice = originalPrice;
+    let isDiscounted = false;
+
+    if (discountValue && discountValue > 0 && discountValue < 1) {
+        finalPrice = originalPrice * (1 - discountValue);
+        isDiscounted = true;
+    }
 
     return (
         <div className="p-6 bg-white/5 rounded-lg max-w-4xl mx-auto text-[#e5e5e1] shadow-xl border border-white/10">
@@ -57,7 +67,20 @@ function renderProductDetails(product: Product, index: number) {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <p className="text-lg">Cena: <strong className="text-3xl text-green-400 ml-2">{product.price.toFixed(2)} zł</strong></p>
+                        {/* Wyświetlanie ceny z uwzględnieniem promocji */}
+                        <div className="text-lg">
+                            Cena: 
+                            {isDiscounted ? (
+                                <>
+                                    <span className="text-red-400 line-through ml-2 text-base">{originalPrice.toFixed(2)} zł</span>
+                                    <strong className="text-3xl text-green-400 ml-3">{finalPrice.toFixed(2)} zł</strong>
+                                    <span className="ml-2 text-xs text-yellow-400 font-bold border border-yellow-400 px-1 rounded">PROMOCJA</span>
+                                </>
+                            ) : (
+                                <strong className="text-3xl text-green-400 ml-2">{originalPrice.toFixed(2)} zł</strong>
+                            )}
+                        </div>
+
                         <p className={stockClass}>
                             Dostępność: {isAvailable ? `Na stanie: ${product.amount} szt.` : 'Chwilowo niedostępny'}
                         </p>
@@ -139,28 +162,36 @@ function renderProductList(products: Product[], title: string) {
     );
 }
 
-export default async function DynamicProductPage({ params }: { params: Promise<{ filter?: string[] }> }) {
+export default async function FilteredProductPage({ 
+    params, 
+    searchParams 
+}: { 
+    params: Promise<{ filter: string[] }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
     const resolvedParams = await params;
-    const filterSegments = resolvedParams.filter;
+    const resolvedSearchParams = await searchParams; // Pobranie query params
     
-    // 1. Lista
-    if (!filterSegments || filterSegments.length === 0) {
-        const products = getAllProductsAlphabetically();
-        return renderProductList(products, "Wszystkie produkty");
+    // Sprawdzamy czy w URL jest parametr 'discount' (np. ?discount=0.1)
+    let discountValue = 0;
+    if (resolvedSearchParams.discount && typeof resolvedSearchParams.discount === 'string') {
+        discountValue = parseFloat(resolvedSearchParams.discount);
     }
 
-    // 2. Kategoria
+    const filterSegments = resolvedParams.filter;
+    
+    // 1. Kategoria
     if (filterSegments.length === 1) {
         const categorySegment = filterSegments[0].toLowerCase();
         const foundType = productTypes.find(type => categorySegment === type.replace(/\s/g, '').toLowerCase());
 
         if (!foundType) notFound();
 
-        const products = getProductsByType(foundType).sort((a, b) => a.name.localeCompare(b.name));
+        const products = getProductsByType(foundType as any).sort((a, b) => a.name.localeCompare(b.name));
         return renderProductList(products, `Kategoria: ${foundType}`);
     }
 
-    // 3. Szczegóły
+    // 2. Szczegóły
     if (filterSegments.length === 2) {
         const categoryFromUrl = filterSegments[0].toLowerCase();
         const productIndex = parseInt(filterSegments[1]);
@@ -170,12 +201,13 @@ export default async function DynamicProductPage({ params }: { params: Promise<{
         const foundType = productTypes.find(type => categoryFromUrl === type.replace(/\s/g, '').toLowerCase());
         if (!foundType) notFound();
 
-        const productsInCategory = getProductsByType(foundType).sort((a, b) => a.name.localeCompare(b.name));
+        const productsInCategory = getProductsByType(foundType as any).sort((a, b) => a.name.localeCompare(b.name));
         const product = productsInCategory[productIndex - 1];
 
         if (!product) notFound();
         
-        return renderProductDetails(product, productIndex);
+        // Przekazujemy discountValue do renderera
+        return renderProductDetails(product, productIndex, discountValue);
     }
     
     notFound();
