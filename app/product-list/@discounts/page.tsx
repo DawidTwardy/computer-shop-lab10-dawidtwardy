@@ -2,7 +2,15 @@ import { getAllProductsAlphabetically, getProductsByType, Product } from '@/lib/
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Helper do numeracji (identyczny jak w liście produktów)
+// Normalizacja URL
+function normalizeCategory(type: string) {
+    return type.toLowerCase()
+        .replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e')
+        .replace(/ł/g, 'l').replace(/ń/g, 'n').replace(/ó/g, 'o')
+        .replace(/ś/g, 's').replace(/ź/g, 'z').replace(/ż/g, 'z')
+        .replace(/\s/g, '');
+}
+
 function getProductCategoryIndex(product: Product) {
     const productsInCategory = getProductsByType(product.type as any)
         .sort((a, b) => a.name.localeCompare(b.name));
@@ -16,7 +24,6 @@ function getRandomProducts(products: Product[], count: number) {
 
 export default function DiscountsPage() {
     const allProducts = getAllProductsAlphabetically();
-    // Pobieramy 3 losowe produkty do promocji
     const randomProducts = getRandomProducts(allProducts, 3);
 
     return (
@@ -29,11 +36,9 @@ export default function DiscountsPage() {
                     const originalPrice = product.price;
                     const discountedPrice = (originalPrice * 0.9).toFixed(2);
                     
-                    // Obliczamy indeks i slug, aby stworzyć poprawny link
                     const categoryIndex = getProductCategoryIndex(product);
-                    const categorySlug = product.type.replace(/\s/g, '');
+                    const categorySlug = normalizeCategory(product.type);
                     
-                    // DODANO: Parametr discount=0.1 w adresie URL
                     const productLink = `/product-list/${categorySlug}/${categoryIndex}?discount=0.1`;
 
                     return (
