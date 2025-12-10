@@ -1,5 +1,8 @@
-import fs from 'fs';
-import path from 'path';
+// lab12/computer-shop-lab10-dawidtwardy/lib/products.ts
+
+// Usunięto importy fs i path, ponieważ dane są teraz pobierane przez API
+// import fs from 'fs';
+// import path from 'path';
 
 export interface Product {
     id: number;
@@ -9,67 +12,37 @@ export interface Product {
     price: number;
     amount: number;
     description: string;
-    date: string;
     image: string;
-}
-
-const productsFilePath = path.join(process.cwd(), 'data', 'products.json');
-
-function loadProducts(): Product[] {
-    try {
-        const fileContent = fs.readFileSync(productsFilePath, 'utf-8');
-        return JSON.parse(fileContent) as Product[];
-    } catch (error) {
-        return [];
+    // Dodano pole category, niezbędne do poprawnego routingu z API
+    category?: {
+        id: number;
+        name: string;
     }
 }
 
-function saveProducts(products: Product[]): void {
-    try {
-        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 2), 'utf-8');
-    } catch (error) {
-        console.error('Błąd zapisywania danych produktów');
-    }
-}
+/**
+ * Konwertuje nazwę kategorii/typu produktu na "slug" URL.
+ * Zamienia spacje na myślniki i usuwa polskie znaki diakrytyczne.
+ */
+export function slugifyCategoryName(name: string): string {
+  // 1. Zamiana na małe litery
+  let slug = name.toLowerCase();
 
-export function getAllProductsAlphabetically(): Product[] {
-    const products = loadProducts();
-    return products.sort((a, b) => a.name.localeCompare(b.name));
-}
+  // 2. Prosta zamiana polskich znaków na odpowiedniki bez diakrytyków
+  slug = slug.replace(/ą/g, 'a')
+             .replace(/ć/g, 'c')
+             .replace(/ę/g, 'e')
+             .replace(/ł/g, 'l')
+             .replace(/ń/g, 'n')
+             .replace(/ó/g, 'o')
+             .replace(/ś/g, 's')
+             .replace(/ż/g, 'z')
+             .replace(/ź/g, 'z');
 
-export function getAllProductsNewestFirst(): Product[] {
-    const products = loadProducts();
-    return products.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-}
+  // 3. Zamiana spacji i innych znaków na myślniki
+  slug = slug.replace(/[^a-z0-9 -]/g, '')
+             .replace(/\s+/g, '-')
+             .replace(/-+/g, '-');
 
-export function getProductsInStock(): Product[] {
-    const products = loadProducts();
-    return products.filter(product => product.amount > 0);
-}
-
-export function getProductsOutOfStock(): Product[] {
-    const products = loadProducts();
-    return products.filter(product => product.amount === 0);
-}
-
-export function getProductsByType(type: Product['type']): Product[] {
-    const products = loadProducts();
-    return products.filter(product => product.type === type);
-}
-
-export function getProductById(id: number): Product | undefined {
-    const products = loadProducts();
-    return products.find(product => product.id === id);
-}
-
-export function updateProductAmount(id: number, newAmount: number): boolean {
-    const products = loadProducts();
-    const productIndex = products.findIndex(product => product.id === id);
-
-    if (productIndex !== -1) {
-        products[productIndex].amount = newAmount;
-        saveProducts(products);
-        return true;
-    }
-    return false;
+  return slug;
 }
