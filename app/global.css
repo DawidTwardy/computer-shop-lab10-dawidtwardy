@@ -4,11 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Podstawowe ustawienia */
 * {
   box-sizing: border-box;
 }
 
-html {
+body {
+  /* ZMIANA: Inter jest lepszy do czytania parametrów technicznych i cen */
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #181817;
+  margin: 0;
+  padding: 0;
+}
+
+/* Opcjonalnie: Nagłówki mogą zostać w Merriweather dla elegancji */
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Merriweather', serif;
 }
 
@@ -18,8 +29,11 @@ ul {
   padding: 0;
 }
 
+/* Twoje style nawigacji - zostawiam bez zmian */
 header nav ul a:hover,
 header nav ul a.active {
   background-color: #bcbcb7;
   color: #181817;
+  border-radius: 4px; /* Dodałem małe zaokrąglenie, żeby ładniej wyglądało */
+  transition: background-color 0.2s; /* Płynna zmiana koloru */
 }

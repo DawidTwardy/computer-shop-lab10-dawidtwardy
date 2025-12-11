@@ -1,199 +1,173 @@
-'use server';
+"use server"
 
-import prisma from "@/lib/prisma";
-import { revalidatePath } from 'next/cache';
+import { prisma } from "@/lib/db"
+import { revalidatePath } from "next/cache"
+import { auth } from "@/lib/auth"
 
-// Definicja typu CartItem z relacjami
-type CartItemWithProductAndCategory = {
-    id: number;
-    quantity: number;
-    createdAt: Date;
-    updatedAt: Date;
-    cartId: number;
-    productId: number;
-    product: {
-        id: number;
-        code: string;
-        name: string;
-        type: string;
-        description: string | null;
-        price: number;
-        amount: number;
-        image: string | null;
-        createdAt: Date;
-        updatedAt: Date;
-        categoryId: number;
-        category: {
-            id: number;
-            name: string;
-        };
-    };
-};
+// --- POBIERANIE DANYCH ---
 
-type CartWithItems = {
-    id: number;
-    createdAt: Date;
-    updatedAt: Date;
-    userId: string;
-    items: CartItemWithProductAndCategory[];
-};
-
-/**
- * Pobiera koszyk użytkownika wraz ze wszystkimi powiązanymi danymi.
- */
-export async function getCartWithItems(userId: string): Promise<CartWithItems | null> {
-  const cart = await prisma.cart.findUnique({
-    where: {
-      userId: userId
-    },
+export async function getCartWithItems(userId: string) {
+  return await prisma.cart.findUnique({
+    where: { userId },
     include: {
       items: {
         include: {
-          product: {
-            include: {
-              category: true,
-            },
-          },
+          product: { include: { category: true } }
         },
-        orderBy: {
-          createdAt: 'desc',
-        },
-      },
-    },
-  }) as CartWithItems | null;
-
-  return cart;
-}
-
-/**
- * Oblicza całkowitą wartość koszyka użytkownika.
- */
-export async function getCartTotal(userId: string): Promise<number> {
-  const cart = await getCartWithItems(userId);
-
-  if (!cart) {
-    return 0;
-  }
-
-  const total = cart.items.reduce((sum, item) => {
-    const price = Number(item.product.price);
-    return sum + (price * item.quantity);
-  }, 0);
-
-  return parseFloat(total.toFixed(2));
-}
-
-/**
- * Pobiera listę wszystkich użytkowników z liczbą produktów w ich koszykach.
- */
-export async function getAllUsersWithCarts() {
-  const users = await prisma.user.findMany({
-    select: {
-      id: true,
-      email: true,
-      name: true,
-      cart: {
-        select: {
-          id: true,
-          _count: {
-            select: {
-              items: true,
-            },
-          },
-        },
-      },
-    },
-    orderBy: {
-      name: 'asc'
-    }
-  });
-
-  return users.map(user => ({
-    id: user.id,
-    email: user.email,
-    name: user.name,
-    cartId: user.cart?.id || null,
-    itemCount: user.cart ? user.cart._count.items : 0,
-  }));
-}
-
-/**
- * Przenosi wszystkie produkty z koszyka jednego użytkownika do koszyka drugiego.
- */
-export async function transferCart(fromUserId: string, toUserId: string) {
-  if (fromUserId === toUserId) {
-    throw new Error('Nie można przenieść koszyka do tego samego użytkownika.');
-  }
-
-  const fromCart = await prisma.cart.findUnique({
-    where: { userId: fromUserId },
-    include: { items: true },
-  });
-
-  if (!fromCart || fromCart.items.length === 0) {
-    console.log(`Koszyk źródłowy (user: ${fromUserId}) jest pusty lub nie istnieje.`);
-    revalidatePath('/basket');
-    return;
-  }
-
-  let toCart = await prisma.cart.findUnique({
-    where: { userId: toUserId },
-    select: { id: true }
-  });
-
-  if (!toCart) {
-    toCart = await prisma.cart.create({
-      data: { userId: toUserId },
-      select: { id: true }
-    });
-  }
-
-  const toCartId = toCart.id;
-  const itemTransferOperations: any[] = [];
-  const productIdsToTransfer = fromCart.items.map(item => item.productId);
-
-  const existingToCartItems = await prisma.cartItem.findMany({
-    where: {
-      cartId: toCartId,
-      productId: {
-        in: productIdsToTransfer,
+        orderBy: { createdAt: 'desc' }
       }
     }
-  });
+  })
+}
 
-  const existingItemsMap = new Map(existingToCartItems.map(item => [item.productId, item]));
+export async function getCartTotal(userId: string) {
+  const cart = await getCartWithItems(userId)
+  if (!cart) return 0
+  
+  return cart.items.reduce((sum, item) => {
+    return sum + (Number(item.product.price) * item.quantity)
+  }, 0)
+}
 
-  for (const fromItem of fromCart.items) {
-    const existingItem = existingItemsMap.get(fromItem.productId);
-
-    if (existingItem) {
-      itemTransferOperations.push(
-        prisma.cartItem.update({
-          where: { id: existingItem.id },
-          data: { quantity: existingItem.quantity + fromItem.quantity },
-        })
-      );
-    } else {
-      itemTransferOperations.push(
-        prisma.cartItem.create({
-          data: {
-            cartId: toCartId,
-            productId: fromItem.productId,
-            quantity: fromItem.quantity,
-          },
-        })
-      );
+export async function getAllUsersWithCarts() {
+  return await prisma.user.findMany({
+    include: {
+      cart: {
+        include: {
+          _count: { select: { items: true } }
+        }
+      }
     }
+  })
+}
+
+// --- MODYFIKACJE KOSZYKA ---
+
+export async function addToCart(productId: number, quantity: number = 1) {
+  const session = await auth()
+  if (!session?.user?.id) return { success: false, message: "Musisz być zalogowany" }
+
+  const userId = session.user.id
+  let cart = await prisma.cart.findUnique({ where: { userId } })
+
+  if (!cart) {
+    cart = await prisma.cart.create({ data: { userId } })
   }
 
-  const deleteSourceItems = prisma.cartItem.deleteMany({
-    where: { cartId: fromCart.id },
-  });
+  await prisma.cartItem.upsert({
+    where: { cartId_productId: { cartId: cart.id, productId } },
+    update: { quantity: { increment: quantity } },
+    create: { cartId: cart.id, productId, quantity }
+  })
 
-  await prisma.$transaction([
-    ...itemTransferOperations,
-    deleteSourceItems,
-  ]);
+  revalidatePath("/basket")
+  return { success: true, message: "Dodano do koszyka" }
+}
 
-  revalidatePath('/basket');
+export async function removeItemFromCart(productId: number) {
+  const session = await auth()
+  if (!session?.user?.id) return { success: false, message: "Brak autoryzacji" }
+
+  const userId = session.user.id
+  const cart = await prisma.cart.findUnique({ where: { userId } })
+  if (!cart) return { success: false, message: "Koszyk nie istnieje" }
+
+  await prisma.cartItem.delete({
+    where: { cartId_productId: { cartId: cart.id, productId } }
+  })
+
+  revalidatePath("/basket")
+  return { success: true, message: "Usunięto produkt" }
+}
+
+export async function clearCart(userId: string) {
+  const cart = await prisma.cart.findUnique({ where: { userId } })
+  if (!cart) return { success: false, message: "Koszyk nie istnieje" }
+
+  await prisma.cartItem.deleteMany({
+    where: { cartId: cart.id }
+  })
+
+  revalidatePath("/basket")
+  return { success: true, message: "Koszyk wyczyszczony" }
+}
+
+export async function placeOrder(userId: string) {
+  const cart = await getCartWithItems(userId)
+  
+  if (!cart || cart.items.length === 0) {
+    return { success: false, message: "Koszyk jest pusty" }
+  }
+
+  const totalAmount = cart.items.reduce((sum, item) => 
+    sum + (item.product.price * item.quantity), 0
+  )
+
+  // Transakcja: Utwórz zamówienie -> Wyczyść koszyk -> Zaktualizuj stany magazynowe
+  await prisma.$transaction(async (tx) => {
+    // 1. Zamówienie
+    await tx.order.create({
+      data: {
+        userId,
+        totalAmount,
+        status: "PENDING",
+        items: {
+          create: cart.items.map(item => ({
+            productId: item.productId,
+            quantity: item.quantity,
+            priceAtOrder: item.product.price,
+            productName: item.product.name,
+            productCode: item.product.code
+          }))
+        }
+      }
+    })
+
+    // 2. Czyszczenie koszyka
+    await tx.cartItem.deleteMany({
+      where: { cartId: cart.id }
+    })
+    
+    // 3. Aktualizacja stanów magazynowych (opcjonalne, ale zalecane)
+    for (const item of cart.items) {
+        await tx.product.update({
+            where: { id: item.productId },
+            data: { amount: { decrement: item.quantity } }
+        })
+    }
+  })
+
+  revalidatePath("/basket")
+  return { success: true, message: "Zamówienie złożone pomyślnie!" }
+}
+
+export async function transferCart(fromUserId: string, toUserId: string) {
+  if (fromUserId === toUserId) throw new Error("Nie można przenieść do tego samego użytkownika")
+
+  const sourceCart = await prisma.cart.findUnique({
+    where: { userId: fromUserId },
+    include: { items: true }
+  })
+
+  if (!sourceCart || sourceCart.items.length === 0) {
+    return { success: false, message: "Kosz źródłowy jest pusty" }
+  }
+
+  let targetCart = await prisma.cart.findUnique({ where: { userId: toUserId } })
+  if (!targetCart) {
+    targetCart = await prisma.cart.create({ data: { userId: toUserId } })
+  }
+
+  for (const item of sourceCart.items) {
+    await prisma.cartItem.upsert({
+      where: { cartId_productId: { cartId: targetCart.id, productId: item.productId } },
+      update: { quantity: { increment: item.quantity } },
+      create: { cartId: targetCart.id, productId: item.productId, quantity: item.quantity }
+    })
+  }
+
+  await prisma.cartItem.deleteMany({ where: { cartId: sourceCart.id } })
+
+  revalidatePath("/basket")
+  return { success: true }
 }

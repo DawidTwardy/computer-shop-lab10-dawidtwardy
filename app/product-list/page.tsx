@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import Link from 'next/link';
-import { fetchProducts, fetchCategories, addToCart } from '@/lib/api';
+import { fetchProducts, fetchCategories } from '@/lib/api';
+import { addToCart } from '@/lib/actions/cart';
 import Image from 'next/image';
 import styles from './page.module.css';
-import { slugifyCategoryName } from '@/lib/products'; // DODANY IMPORT
+import { slugifyCategoryName } from '@/lib/products';
 
-// ZAKTUALIZOWANY INTERFEJS O WŁAŚCIWOŚCI POCHODZĄCE Z API
 interface Product {
   id: number;
   name: string;
@@ -17,11 +17,10 @@ interface Product {
   image?: string;
   description?: string;
   type?: string;
-  categoryId: number; 
-  // DODANO ZAGNIEDŻONY OBIEKT KATEGORII ZWRACANY PRZEZ API
+  categoryId: number;
   category: {
     id: number;
-    name: string; // Używany do generowania sluga
+    name: string;
   };
 }
 
@@ -37,6 +36,9 @@ export default function ProductList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [isPending, startTransition] = useTransition();
+  const [addingId, setAddingId] = useState<number | null>(null);
+
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -45,7 +47,7 @@ export default function ProductList() {
           fetchProducts(),
           fetchCategories(),
         ]);
-        setProducts(productsData as Product[]); 
+        setProducts(productsData as Product[]);
         setCategories(categoriesData);
       } catch (err) {
         setError('Nie udało się załadować danych');
@@ -62,13 +64,23 @@ export default function ProductList() {
     ? products.filter((p) => p.categoryId === selectedCategory)
     : products;
 
-  const handleAddToCart = async (productId: number) => {
-    try {
-      await addToCart(1, productId, 1); 
-      alert('Produkt dodany do koszyka!');
-    } catch (err) {
-      alert('Błąd przy dodawaniu do koszyka');
-    }
+  const handleAddToCart = (productId: number) => {
+    setAddingId(productId);
+    
+    startTransition(async () => {
+      try {
+        const result = await addToCart(productId, 1);
+        if (result.success) {
+          
+        } else {
+          alert('Błąd: ' + result.message);
+        }
+      } catch (err) {
+        alert('Błąd przy dodawaniu do koszyka');
+      } finally {
+        setAddingId(null);
+      }
+    });
   };
 
   if (loading) return <div className={styles.title}>⏳ Ładowanie produktów...</div>;
@@ -78,21 +90,12 @@ export default function ProductList() {
     <main>
       <h2 className={styles.title}>Lista Produktów ({filteredProducts.length})</h2>
       
-      {/* Filtry po kategoriach */}
-      <div style={{ marginBottom: '20px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '8px' }}>
-        <h3>Filtruj po kategorii:</h3>
-        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+      <div className={styles.filterSection}>
+        <h3 className={styles.filterHeader}>Filtruj po kategorii:</h3>
+        <div className={styles.filterButtons}>
           <button
             onClick={() => setSelectedCategory(null)}
-            style={{
-              padding: '8px 15px',
-              backgroundColor: selectedCategory === null ? '#333' : '#ddd',
-              color: selectedCategory === null ? '#fff' : '#000',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-            }}
+            className={`${styles.filterBtn} ${selectedCategory === null ? styles.filterBtnActive : ''}`}
           >
             Wszystkie ({products.length})
           </button>
@@ -102,15 +105,7 @@ export default function ProductList() {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                style={{
-                  padding: '8px 15px',
-                  backgroundColor: selectedCategory === cat.id ? '#333' : '#ddd',
-                  color: selectedCategory === cat.id ? '#fff' : '#000',
-                  border: 'none',
-                  borderRadius: '4px',
-                  cursor: 'pointer',
-                  fontWeight: 'bold',
-                }}
+                className={`${styles.filterBtn} ${selectedCategory === cat.id ? styles.filterBtnActive : ''}`}
               >
                 {cat.name} ({count})
               </button>
@@ -124,13 +119,14 @@ export default function ProductList() {
       ) : (
         <ul className={styles.productListGrid}>
           {filteredProducts.map((p: Product) => {
-            // GENEROWANIE POPRAWNEGO SLUGA
             const categorySlug = p.category ? slugifyCategoryName(p.category.name) : 'unknown';
             
+            const isAddingThisItem = isPending && addingId === p.id;
+            const isOutOfStock = p.amount <= 0;
+
             return (
               <li key={p.id} className={styles.productListItem}>
-                {/* POPRAWIONY LINK Z UŻYCIEM SLUGA: /product-list/<slug>/<id> */}
-                <Link href={`/product-list/${categorySlug}/${p.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link href={`/product-list/${categorySlug}/${p.id}`}>
                   {p.image && (
                     <div className={styles.productImageContainer}>
                       <Image 
@@ -152,22 +148,15 @@ export default function ProductList() {
                   <p>Cena: <strong>{p.price.toFixed(2)} zł</strong></p>
                   <p>Ilość na stanie: {p.amount}</p>
                 </Link>
+                
                 <button 
                   onClick={() => handleAddToCart(p.id)}
-                  disabled={p.amount <= 0}
-                  style={{ 
-                    padding: '8px 15px', 
-                    backgroundColor: p.amount > 0 ? '#bcbcb7' : '#999', 
-                    color: '#181817', 
-                    border: 'none', 
-                    borderRadius: '4px', 
-                    cursor: p.amount > 0 ? 'pointer' : 'not-allowed',
-                    fontWeight: 'bold',
-                    opacity: p.amount > 0 ? 1 : 0.6,
-                    width: '100%',
-                  }}
+                  disabled={isOutOfStock || isAddingThisItem}
+                  className={styles.addToCartBtn}
                 >
-                  {p.amount > 0 ? 'Dodaj do koszyka' : 'Brak na stanie'}
+                  {isOutOfStock 
+                    ? 'Brak na stanie' 
+                    : (isAddingThisItem ? 'Dodawanie...' : 'Dodaj do koszyka')}
                 </button>
               </li>
             );

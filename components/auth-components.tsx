@@ -1,34 +1,39 @@
-// /components/auth-components.tsx
-import { signIn, signOut } from "@/lib/auth";
-import React from 'react';
+import { signIn, signOut } from "@/lib/auth"
 
-export function SignIn({ provider }: { provider?: string }) {
+export function SignIn({ 
+  provider, 
+  className, 
+  ...props 
+}: { provider?: string, className?: string } & React.ComponentPropsWithRef<"button">) {
   return (
     <form
       action={async () => {
-        "use server";
-        await signIn(provider);
+        "use server"
+        await signIn(provider)
       }}
     >
-      <button className="bg-neutral-700 text-white p-2 rounded-md hover:bg-neutral-600 transition-colors">
-        Zaloguj się z {provider}
+      <button className={className || "bg-neutral-700 text-white p-2 rounded-md"} {...props}>
+        Zaloguj się {provider ? `z ${provider}` : ""}
       </button>
     </form>
-  );
+  )
 }
 
-export function SignOut() {
+export function SignOut({ 
+  className, 
+  ...props 
+}: { className?: string } & React.ComponentPropsWithRef<"button">) {
   return (
     <form
       action={async () => {
-        "use server";
-        await signOut();
+        "use server"
+        await signOut()
       }}
       className="w-full"
     >
-      <button className="bg-red-600 text-white p-2 rounded-md w-full hover:bg-red-700 transition-colors">
+      <button className={className || "bg-neutral-700 text-white p-2 rounded-md"} {...props}>
         Wyloguj się
       </button>
     </form>
-  );
+  )
 }
